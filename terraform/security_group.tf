@@ -23,7 +23,8 @@ resource "aws_vpc_security_group_ingress_rule" "deny_all_inbound" {
   description       = "Default deny all inbound traffic"
 }
 
-
+# Ingress:
+# None - Inbound access is provided exclusively via AWS SSM Session Manager
 
 # Egress: Allow outbound HTTPS for package installation and Snowflake connectivity
 resource "aws_vpc_security_group_egress_rule" "https_outbound" {
