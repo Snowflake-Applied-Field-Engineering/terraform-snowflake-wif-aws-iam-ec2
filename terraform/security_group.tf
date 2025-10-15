@@ -32,7 +32,7 @@ resource "aws_vpc_security_group_egress_rule" "https_outbound" {
   ip_protocol       = "tcp"
   from_port         = 443
   to_port           = 443
-  description       = "Outbound HTTPS for package management and Snowflake API"
+  description       = "Outbound HTTPS for package management, AWS SSM, and Snowflake API"
 }
 
 # Egress: Allow outbound HTTP (temporary - consider removing after initial setup)
@@ -43,16 +43,6 @@ resource "aws_vpc_security_group_egress_rule" "http_outbound" {
   from_port         = 80
   to_port           = 80
   description       = "Outbound HTTP for package management (temporary)"
-}
-
-# Egress: Allow SSM endpoints connectivity
-resource "aws_vpc_security_group_egress_rule" "ssm_outbound" {
-  security_group_id = aws_security_group.ec2.id
-  cidr_ipv4         = "0.0.0.0/0"
-  ip_protocol       = "tcp"
-  from_port         = 443
-  to_port           = 443
-  description       = "Outbound to AWS SSM endpoints"
 }
 
 # Egress: Allow NTP for time synchronization
