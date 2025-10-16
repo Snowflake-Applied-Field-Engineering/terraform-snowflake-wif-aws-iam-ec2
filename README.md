@@ -31,8 +31,8 @@ This module creates the following resources:
 1.  **Clone the Repository**
 - Choose the file location to host the repo and clone the repository and navigate into the repo.
     ```bash
-    git clone https://github.com/scooper505/Snowflake-Workload-Identity-Federation-WIF-Test-Environment
-    cd Snowflake-Workload-Identity-Federation-WIF-Test-Environment
+    git clone git@github.com:Snowflake-Applied-Field-Engineering/terraform-snowflake-wif-aws-iam-ec2.git
+    cd terraform-snowflake-wif-aws-iam-ec2
     ```
 
 2.  **Configure Variables**
