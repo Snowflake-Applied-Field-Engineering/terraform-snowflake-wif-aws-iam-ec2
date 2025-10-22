@@ -1,6 +1,8 @@
 # locals.tf
 
 locals {
+  # account_id = data.aws_caller_identity.current.account_id
+  # region     = data.aws_region.current.region
   # Render the EC2 user_data from the template file.
   # The template installs Python, sets up a venv, installs the Snowflake connector,
   # and writes out a test script.
@@ -25,8 +27,11 @@ locals {
   # Convenience name tags
   common_tags = merge(
     {
-      Project = "snowflake-wif-ec2-test"
+      Project   = "snowflake-wif-ec2-test",
+      ManagedBy = "Terraform"
+
     },
     var.tags
   )
 }
+

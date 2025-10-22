@@ -4,17 +4,18 @@
 
 output "instance_id" {
   description = "ID of the EC2 test instance"
-  value       = aws_instance.this.id
+  value       = module.ec2_instance.id
 }
 
 output "instance_private_ip" {
   description = "Private IP of the EC2 test instance"
-  value       = aws_instance.this.private_ip
+  value       = module.ec2_instance.private_ip
 }
 
 output "ssm_start_session_command" {
   description = "Convenience command to start a Session Manager shell"
-  value       = "aws ssm start-session --target ${aws_instance.this.id} --region ${var.region}"
+  # value       = "aws ssm start-session --target ${module.ec2_instance.id} --region ${data.aws_region.current.name}"
+  value = "aws ssm start-session --target ${module.ec2_instance.id} --region ${data.aws_region.current.name}"
 }
 
 # Optional: show the selected AMI ID that was used (helpful for audits)

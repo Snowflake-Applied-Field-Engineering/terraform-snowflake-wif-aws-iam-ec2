@@ -1,10 +1,12 @@
 # variables.tf
 
-variable "region" {
-  description = "AWS region to deploy into"
-  type        = string
+# variable "region" {
+#   description = "AWS region to deploy into"
+#   type        = string
 
-}
+# }
+
+# TODO validate that we actually need all vars 
 
 variable "vpc_id" {
   description = "Existing VPC ID where the test instance will run"

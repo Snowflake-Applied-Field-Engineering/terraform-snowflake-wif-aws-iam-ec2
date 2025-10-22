@@ -1,18 +1,3 @@
-terraform {
-  required_version = ">= 1.5.0"
-
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 6.12" # More specific constraint for stability
-    }
-    snowflake = {
-      source  = "snowflakedb/snowflake"
-      version = "~> 2.6.0" # Pinned to current version from your lock file
-    }
-  }
-}
-
 # AWS Provider
 provider "aws" {
   region = var.region

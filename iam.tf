@@ -1,4 +1,4 @@
-# iam.tf
+# # iam.tf
 
 # Trust policy: allow EC2 to assume this role
 data "aws_iam_policy_document" "ec2_trust" {
@@ -30,3 +30,4 @@ resource "aws_iam_instance_profile" "this" {
   role = aws_iam_role.ec2.name
   tags = local.common_tags
 }
+

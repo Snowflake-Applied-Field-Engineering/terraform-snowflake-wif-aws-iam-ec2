@@ -8,9 +8,9 @@ output "snowflake_current_account" {
   value       = data.snowflake_current_account.this.account
 }
 
-############################################
+################################################################################
 # snowflake.tf — WIF role, user, and grants
-############################################
+################################################################################
 
 # 0) Pick the AWS role ARN to bind as the workload identity:
 #    - If var.aws_wif_role_arn is provided, use it

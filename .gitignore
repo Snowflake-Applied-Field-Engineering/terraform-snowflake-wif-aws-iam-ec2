@@ -37,3 +37,11 @@ terraform.rc
 
 # Ignore keys directory
 keys/
+
+# Ignore .terraform.lock.hcl file, as this shouldn't be committed to module repositories
+.terraform.lock.hcl
+
+# Ignore key file
+*.pem
+*.p8
+*.pub

@@ -13,26 +13,15 @@ resource "aws_security_group" "ec2" {
 }
 
 # Default: Deny all inbound traffic (zero-trust)
-# Access is provided exclusively via AWS SSM Session Manager
-resource "aws_vpc_security_group_ingress_rule" "deny_all_inbound" {
-  security_group_id = aws_security_group.ec2.id
-  cidr_ipv4         = "0.0.0.0/0"
-  ip_protocol       = "-1"
-  from_port         = 0
-  to_port           = 0
-  description       = "Default deny all inbound traffic"
-}
 
-
-
-# Egress: Allow outbound HTTPS for package installation and Snowflake connectivity
+# Egress: Allow outbound HTTPS
 resource "aws_vpc_security_group_egress_rule" "https_outbound" {
   security_group_id = aws_security_group.ec2.id
   cidr_ipv4         = "0.0.0.0/0"
   ip_protocol       = "tcp"
   from_port         = 443
   to_port           = 443
-  description       = "Outbound HTTPS for package management and Snowflake API"
+  description       = "Outbound HTTPS for package management, Snowflake API, and SSM endpoints"
 }
 
 # Egress: Allow outbound HTTP (temporary - consider removing after initial setup)
@@ -45,15 +34,15 @@ resource "aws_vpc_security_group_egress_rule" "http_outbound" {
   description       = "Outbound HTTP for package management (temporary)"
 }
 
-# Egress: Allow SSM endpoints connectivity
-resource "aws_vpc_security_group_egress_rule" "ssm_outbound" {
-  security_group_id = aws_security_group.ec2.id
-  cidr_ipv4         = "0.0.0.0/0"
-  ip_protocol       = "tcp"
-  from_port         = 443
-  to_port           = 443
-  description       = "Outbound to AWS SSM endpoints"
-}
+# # Egress: Allow SSM endpoints connectivity
+# resource "aws_vpc_security_group_egress_rule" "ssm_outbound" {
+#   security_group_id = aws_security_group.ec2.id
+#   cidr_ipv4         = "0.0.0.0/0"
+#   ip_protocol       = "tcp"
+#   from_port         = 443
+#   to_port           = 443
+#   description       = "Outbound to AWS SSM endpoints"
+# }
 
 # Egress: Allow NTP for time synchronization
 resource "aws_vpc_security_group_egress_rule" "ntp_outbound" {
