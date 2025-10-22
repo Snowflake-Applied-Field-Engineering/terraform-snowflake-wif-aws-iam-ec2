@@ -110,12 +110,6 @@ variable "wif_user_name" {
   default     = "WIF_TEST_USER"
 }
 
-variable "wif_user_login_name" {
-  description = "LOGIN_NAME for the WIF test user (often same as name)"
-  type        = string
-  default     = "WIF_TEST_USER"
-}
-
 variable "wif_role_name" {
   description = "Name of the WIF test role"
   type        = string

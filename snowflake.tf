@@ -37,9 +37,9 @@ resource "snowflake_execute" "wif_user_create" {
   ]
 
   # CREATE (idempotent), VERIFY (query), and DESTROY (revert)
+  # Note: LOGIN_NAME is not needed for WIF users - authentication is via WORKLOAD_IDENTITY
   execute = <<SQL
 CREATE USER IF NOT EXISTS ${var.wif_user_name}
-  LOGIN_NAME = ${var.wif_user_login_name}
   TYPE = SERVICE
   DEFAULT_ROLE = ${snowflake_account_role.wif_test_role.name}
   WORKLOAD_IDENTITY = (
