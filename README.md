@@ -1,5 +1,7 @@
 # Snowflake Workload Identity Federation (WIF) Test Environment
 
+[![Terraform Validation](https://github.com/Snowflake-Applied-Field-Engineering/terraform-snowflake-wif-aws-iam-ec2/actions/workflows/terraform-validate.yml/badge.svg)](https://github.com/Snowflake-Applied-Field-Engineering/terraform-snowflake-wif-aws-iam-ec2/actions/workflows/terraform-validate.yml)
+
 A Terraform module to deploy a test AWS EC2 instance for testing **Snowflake Workload Identity Federation (WIF)**. This enables secure authentication to Snowflake using an AWS IAM role, eliminating the need for password or key-based credentials.
 
 ## Architecture Summary
@@ -16,6 +18,16 @@ This module creates the following resources:
   - A database Role (`WIF_TEST_ROLE`) with permissions.
   - A Service User (`WIF_TEST_USER`) configured with a the corresponding AWS IAM Role to enable `WORKLOAD_IDENTITY` authentication.
   - Permission grants on a warehouse, database, and schema set by you.
+
+## Continuous Integration
+
+This repository includes automated Terraform validation through GitHub Actions. The workflow runs on every push and pull request to ensure:
+
+- ✅ Terraform configuration is properly formatted (`terraform fmt`)
+- ✅ Terraform initialization succeeds (`terraform init`)
+- ✅ Terraform configuration is valid (`terraform validate`)
+
+The status badge at the top of this README shows the current validation status.
 
 ## Quick Start
 
